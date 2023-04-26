@@ -4,7 +4,7 @@ export async function signUp(req, res) {
     const { body } = res.locals
     try {
         await users.insertOne(body)
-        return res.status(201).send("Usuário Cadastrado com Sucesso!")
+        return res.status(201).send({message: "Usuário Cadastrado com Sucesso!"})
     } catch (err) {
         console.error(err)
         return res.status(422).send("signUp")
