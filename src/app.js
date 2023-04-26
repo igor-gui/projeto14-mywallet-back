@@ -12,6 +12,6 @@ const routerList = [userRouter, transactionsRouter]
 
 app.use(routerList)
 
-const PORT = 5000;
+const port = process.env.PORT || 5000;
 
-app.listen(PORT, () => console.log(`O server está rodando na porta ${PORT}`));
+app.listen(port, () => console.log(`O server está rodando na porta ${port}`));
