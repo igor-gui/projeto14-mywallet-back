@@ -1,15 +1,14 @@
 import express from "express";
 import cors from "cors";
-import dotenv from "dotenv";
 import userRouter from "./routers/user.routes.js";
-dotenv.config()
+import transactionsRouter from "./routers/transaction.routes.js"
 
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-const routerList = [userRouter]
+const routerList = [userRouter, transactionsRouter]
 
 app.use(routerList)
 

@@ -1,6 +1,6 @@
 import Joi from "joi"
 
-export default function validateSchema(schema) {
+export default function validateSchema(schema, string) {
 
     return (req, res, next) => {
         const { error } = schema.validate(req.body, {abortEarly: false})
@@ -8,6 +8,7 @@ export default function validateSchema(schema) {
             const errorMessages = error.details.map((detail => detail.message))
             return res.status(422).send(errorMessages)
         }
+        if(string === '/cadastro' || string === '/login') res.locals.routeName = string;
         next()
     }
 }
