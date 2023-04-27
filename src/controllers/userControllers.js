@@ -12,11 +12,11 @@ export async function signUp(req, res) {
 }
 
 export async function logIn(req, res) {
-    const { session } = res.locals;
+    const { session, user } = res.locals;
     console.log(session)
     try {
         await sessions.insertOne(session)
-        return res.status(200).send(session.token)
+        return res.status(200).send({token: session.token, name: user.name})
     } catch (err) {
         console.error(err)
         return res.status(422).send("log_in")
